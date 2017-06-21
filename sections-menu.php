@@ -15,6 +15,9 @@ define( 'SECTION_MENUS__STATIC_URL', plugins_url( 'static' ), SECTION_MENUS__FIL
 define( 'SECTION_MENUS__SCRIPT_URL', SECTION_MENUS__STATIC_URL . 'js' );
 define( 'SECTION_MENUS__STYLES_URL', SECTION_MENUS__STATIC_URL . 'css' );
 
+include_once 'includes/sections-menu-common.php';
+include_once 'includes/sections-menu-shortcode.php';
+
 if ( ! function_exists( 'section_menus_activation' ) ) {
     function section_menus_activation() {
 
@@ -30,3 +33,5 @@ if ( ! function_exists( 'section_menus_deactivation' ) ) {
 
     register_deactivation_hook( 'section_menus_deactivation', SECTION_MENUS__FILE );
 }
+
+add_action( 'init', array( 'Section_Menus_Shortcode', 'register_shortcode' ), 10, 0 );
