@@ -47,4 +47,8 @@ gulp.task('readme', function() {
     .pipe(gulp.dest('.'));
 });
 
+gulp.task('watch', function() {
+  gulp.watch(config.src.js + '/**/*.js', ['js']);
+});
+
 gulp.task('default', ['readme']);

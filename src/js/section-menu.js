@@ -1,8 +1,8 @@
 (function ($) {
-  function debounce(func, wait, immediate) {
+  const debounce = (func, wait, immediate) => {
     let timeout;
 
-    return function () {
+    return () => {
       const context = this,
         args = arguments;
 
@@ -21,13 +21,12 @@
         func.apply(context, args);
       }
     };
-  }
+  };
 
   const onClick = (e) => {
     e.preventDefault();
-
-    let $target = $(this.hash);
-    $target = $target.length ? $target : $(`[name=${this.hash.slice()}]`);
+    const hash = e.target.hash,
+      $target = $(hash);
 
     const scrollTo = $target.offset().top - 50;
     if ($(window).width() < 991) {
@@ -51,32 +50,24 @@
     } else {
       text = $item.find('.section-title').text();
     }
-    let $listItem = $('<li></li>'),
-      $anchor = $(`<a class="section-link" href="#${url}">${text}</a>`);
+    let $listItem = $('<li class="nav-item"></li>'),
+      $anchor = $(`<a class="section-link nav-link" href="#${url}">${text}</a>`),
+      $bumper = $('.navbar-bumper');
     $anchor.on('click', onClick);
     $listItem.append($anchor);
     $menuList.append($listItem);
   };
 
-  const setBumperHeight = () => {
-    $bumper.height($menu.height());
-  };
-
   const onScroll = () => {
     if ($(window).scrollTop() >= offset) {
-      $menu.removeClass('center');
-      $menu.addClass('navbar-fixed-top');
-      $('body').addClass('fixed-navbar');
+      $menu.addClass('fixed-top');
     } else {
-      $menu.addClass('center');
-      $menu.removeClass('navbar-fixed-top');
-      $('body').removeClass('fixed-navbar');
+      $menu.removeClass('fixed-top');
     }
   };
 
   const onResize = debounce(() => {
-    offset = $firstSection.offset().top - $menu.height(); // Reduce by 50px to account for university header.
-    setBumperHeight();
+    offset = $firstSection.offset().top - $menu.height() - 50; // Reduce by 50px to account for university header.
   }, 100);
 
   const $sectionMenu  = $('#sections-menu'),
@@ -84,8 +75,7 @@
     $sections     = $(selector),
     $menuList     = $sectionMenu.find('ul.nav'),
     $menu         = $('#sections-navbar'),
-    $firstSection = $sections.first(),
-    $bumper       = $menu.next('.navbar-bumper');
+    $firstSection = $sections.first();
 
   let offset  = $firstSection.offset().top;
 
@@ -100,7 +90,6 @@
     offset: 60
   });
   $(window).on('resize', onResize);
-  setBumperHeight();
   onScroll();
 
 }(jQuery));

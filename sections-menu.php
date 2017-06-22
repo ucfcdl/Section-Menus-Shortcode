@@ -37,3 +37,5 @@ if ( ! function_exists( 'section_menus_deactivation' ) ) {
 
 add_action( 'init', array( 'Section_Menus_Shortcode', 'register_shortcode' ), 10, 0 );
 add_action( 'wp_enqueue_scripts', array( 'Section_Menus_Common', 'enqueue_assets' ), 10, 0 );
+
+add_filter( 'the_content', array( 'Section_Menus_Common', 'format_shortcode_output' ), 10, 1 );
