@@ -14,10 +14,18 @@
       const $target = $(hash);
       const scrollTo = $target.offset().top - this.height();
 
+      if (history.pushState) {
+        history.pushState(null, null, hash);
+      } else {
+        location.hash = hash;
+      }
+
       if ($target.length) {
         $('html, body').animate({
           scrollTop: scrollTo
         }, settings.scrollTime);
+
+        $target.focus();
       }
     };
 
