@@ -53,7 +53,7 @@ if ( ! function_exists( 'section_menus_display_default' ) ) {
     function section_menus_display_default( $selector ) {
         ob_start();
     ?>
-        <nav id="sections-navbar" class="navbar navbar-toggleable-md navbar-light bg-primary">
+        <nav class="navbar navbar-toggleable-md navbar-light bg-primary sections-menu">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggler navbar-toggler-right" data-toggle="collapse" data-target="#sections-menu" aria-controls="#sections-menu" aria-expanded="false">

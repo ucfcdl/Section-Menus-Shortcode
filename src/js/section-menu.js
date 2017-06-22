@@ -1,95 +1,78 @@
 (function ($) {
-  const debounce = (func, wait, immediate) => {
-    let timeout;
+  $.fn.sectionMenu = function (options) {
+    const settings = $.extend({
+      selector: this.data('selector') ? this.data('selector') : '.auto-section',
+      offset: this.height(),
+      scrollTime: 750
+    }, options);
 
-    return () => {
-      const context = this,
-        args = arguments;
+    // Triggered when anchor is clicked
+    const onClick = (e) => {
+      e.preventDefault();
 
-      const later = function () {
-        timeout = null;
-        if (!immediate) {
-          func.apply(context, args);
-        }
-      };
+      const hash = e.target.hash;
+      const $target = $(hash);
+      const scrollTo = $target.offset().top - this.height();
 
-      const callNow = immediate && !timeout;
-      clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
-
-      if (callNow) {
-        func.apply(context, args);
+      if ($target.length) {
+        $('html, body').animate({
+          scrollTop: scrollTo
+        }, settings.scrollTime);
       }
     };
+
+    // Callback to add menu items
+    const addToMenu = ($i, $section) => {
+      const $item  = $($section);
+      const url = $item.attr('id');
+      let text;
+
+      if (typeof $item.data('section-link-title') !== 'undefined') {
+        text = $item.data('section-link-title');
+      } else {
+        text = $item.find('.section-title').text();
+      }
+
+      if (!text) {
+        return;
+      }
+
+      const $listItem = $('<li class="nav-item"></li>');
+      const $anchor = $(`<a class="section-link nav-link" href="#${url}">${text}</a>`);
+
+      $anchor.on('click', onClick);
+      $listItem.append($anchor);
+      $menuList.append($listItem);
+    };
+
+    // Called whenever window is scrolled
+    const onScroll = () => {
+      if ($(window).scrollTop() >= settings.offset) {
+        this.addClass('fixed-top');
+      } else {
+        this.removeClass('fixed-top');
+      }
+    };
+
+    // Initial constants
+    const $sections = $(settings.selector);
+    const $menuList = $('ul.nav');
+    const $firstSection = $sections.first();
+
+    settings.offset = $firstSection.offset().top - this.height();
+
+    $sections.each(addToMenu);
+    $(window).on('scroll', onScroll);
+    $('body').scrollspy({
+      target: this,
+      offset: this.height()
+    });
+
+    return this;
   };
 
-  const onClick = (e) => {
-    e.preventDefault();
-    const hash = e.target.hash,
-      $target = $(hash);
-
-    const scrollTo = $target.offset().top - 50;
-    if ($(window).width() < 991) {
-      $sectionMenu.collapse('toggle');
-    }
-
-    if ($target.length) {
-      $('html, body').animate({
-        scrollTop: scrollTo
-      }, 750);
-    }
-  };
-
-  const addToMenu = ($i, $section) => {
-    let $item  = $($section),
-      url = $item.attr('id'),
-      text;
-
-    if (typeof $item.data('section-link-title') !== 'undefined') {
-      text = $item.data('section-link-title');
-    } else {
-      text = $item.find('.section-title').text();
-    }
-    let $listItem = $('<li class="nav-item"></li>'),
-      $anchor = $(`<a class="section-link nav-link" href="#${url}">${text}</a>`),
-      $bumper = $('.navbar-bumper');
-    $anchor.on('click', onClick);
-    $listItem.append($anchor);
-    $menuList.append($listItem);
-  };
-
-  const onScroll = () => {
-    if ($(window).scrollTop() >= offset) {
-      $menu.addClass('fixed-top');
-    } else {
-      $menu.removeClass('fixed-top');
-    }
-  };
-
-  const onResize = debounce(() => {
-    offset = $firstSection.offset().top - $menu.height() - 50; // Reduce by 50px to account for university header.
-  }, 100);
-
-  const $sectionMenu  = $('#sections-menu'),
-    selector      = $sectionMenu.data('selector'),
-    $sections     = $(selector),
-    $menuList     = $sectionMenu.find('ul.nav'),
-    $menu         = $('#sections-navbar'),
-    $firstSection = $sections.first();
-
-  let offset  = $firstSection.offset().top;
-
-  if (!$sectionMenu.length) {
-    return;
-  }
-
-  $.each($sections, addToMenu);
-  $(document).on('scroll', onScroll);
-  $('body').scrollspy({
-    target: '#sections-menu',
-    offset: 60
+  $(document).ready(($) => {
+    $('.sections-menu').sectionMenu();
   });
-  $(window).on('resize', onResize);
-  onScroll();
 
 }(jQuery));
