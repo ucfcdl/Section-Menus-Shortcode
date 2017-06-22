@@ -13,6 +13,10 @@ if ( ! class_exists( 'Section_Menus_Common' ) ) {
 
             return $output;
         }
+
+        public static function enqueue_assets() {
+            wp_enqueue_script( 'section-menu-js', SECTION_MENUS__SCRIPT_URL . 'section-menu.min.js', array( 'jquery', 'script' ), null, true );
+        }
     }
 }
 
@@ -20,7 +24,7 @@ if ( ! function_exists( 'section_menus_display_default' ) ) {
     function section_menus_display_default( $selector ) {
         ob_start();
     ?>
-        <nav id="sections-navbar" class="navbar navbar-gold center">
+        <nav id="sections-navbar" class="navbar navbar-toggleable-md navbar-light bg-primary">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sections-menu">
