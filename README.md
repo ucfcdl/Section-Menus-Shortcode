@@ -5,7 +5,7 @@ Provides a shortcode that automatically generates a menu for each section on you
 
 ## Description ##
 
-Provides a shortcode that automatically generates a menu for each section on your page with a particular selector.
+Provides a shortcode that automatically generates a menu for each section on your page with a particular selector. This menu system is meant to be used with Bootstrap 4 or the [Athena Framework](https://ucf.github.io/Athena-Framework/).
 
 Note: jQuery is *required* for the JavaScript included with this plugin to work.
 
