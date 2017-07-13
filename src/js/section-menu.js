@@ -81,7 +81,10 @@
   };
 
   $(document).ready(($) => {
-    $('.sections-menu').sectionMenu();
+    var $sectionsMenu = $('.sections-menu');
+    if($sectionsMenu.length) {
+      $sectionsMenu.sectionMenu();
+    }
   });
 
 }(jQuery));
