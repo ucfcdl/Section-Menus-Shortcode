@@ -81,8 +81,8 @@
   };
 
   $(document).ready(($) => {
-    var $sectionsMenu = $('.sections-menu');
-    if($sectionsMenu.length) {
+    const $sectionsMenu = $('.sections-menu');
+    if ($sectionsMenu.length) {
       $sectionsMenu.sectionMenu();
     }
   });
