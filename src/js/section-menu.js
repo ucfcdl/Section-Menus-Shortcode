@@ -1,6 +1,7 @@
 (function ($) {
   $.fn.sectionMenu = function (options) {
     const settings = $.extend({
+      nav: this,
       selector: this.data('selector') ? this.data('selector') : '.auto-section',
       offset: this.height(),
       scrollTime: 750
@@ -64,7 +65,7 @@
 
     // Initial constants
     const $sections = $(settings.selector);
-    const $menuList = $('.sections-menu').find('ul.nav');
+    const $menuList = $(settings.nav).find('ul.nav');
     const $firstSection = $sections.first();
 
     settings.offset = $firstSection.offset().top - this.height();
