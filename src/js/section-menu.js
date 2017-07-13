@@ -64,7 +64,7 @@
 
     // Initial constants
     const $sections = $(settings.selector);
-    const $menuList = $('ul.nav');
+    const $menuList = $('.sections-menu').find('ul.nav');
     const $firstSection = $sections.first();
 
     settings.offset = $firstSection.offset().top - this.height();
