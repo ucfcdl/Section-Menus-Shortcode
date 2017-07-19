@@ -53,22 +53,19 @@ if ( ! function_exists( 'section_menus_display_default' ) ) {
 	function section_menus_display_default( $selector ) {
 		ob_start();
 	?>
-		<nav class="navbar navbar-toggleable-md navbar-light bg-primary sections-menu">
+		<nav class="navbar navbar-toggleable-md navbar-light bg-primary sections-menu" style="box-shadow: 0 2px 32px rgba(0,0,0,.5);">
 			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggler navbar-toggler-right" data-toggle="collapse" data-target="#sections-menu" aria-controls="#sections-menu" aria-expanded="false">
-						<span class="sr-only">Toggle sections navigation</span>
-						Menu <span class="fa fa-bars" aria-hidden="true"></span>
-					</button>
-				</div>
-				<div class="collapse navbar-collapse" id="sections-menu" data-selector="<?php echo $selector; ?>">
+				<button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#sections-menu" aria-controls="#sections-menu" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="sr-only">Toggle sections navigation</span>
+					<span class="navbar-toggler-icon" aria-hidden="true"></span>
+				</button>
+				<div class="navbar-collapse collapse" id="sections-menu" data-selector="<?php echo $selector; ?>">
 					<ul class="nav navbar-nav">
 
 					</ul>
 				</div>
 			</div>
 		</nav>
-		<div class="navbar-bumper"></div>
 	<?php
 		return ob_get_clean();
 	}

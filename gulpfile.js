@@ -7,7 +7,8 @@ var gulp        = require('gulp'),
     include     = require('gulp-include'),
     babel       = require('gulp-babel'),
     uglify      = require('gulp-uglify'),
-    readme      = require('gulp-readme-to-markdown');
+    readme      = require('gulp-readme-to-markdown'),
+    browserSync = require('browser-sync').create();
 
 var configDefault = {
   src: {
@@ -47,8 +48,17 @@ gulp.task('readme', function() {
     .pipe(gulp.dest('.'));
 });
 
-gulp.task('watch', function() {
-  gulp.watch(config.src.js + '/**/*.js', ['js']);
+gulp.task('watch', function () {
+  if (config.sync) {
+    browserSync.init({
+        proxy: {
+          target: config.target
+        }
+    });
+  }
+
+  gulp.watch(config.src.js + '/**/*.js', ['js']).on('change', browserSync.reload);
+  gulp.watch('./**/*.php').on('change', browserSync.reload);
 });
 
 gulp.task('default', ['readme']);
