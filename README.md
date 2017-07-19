@@ -21,6 +21,9 @@ Note: jQuery is *required* for the JavaScript included with this plugin to work.
 
 ## Changelog ##
 
+### 1.0.1 ###
+* Updated mobile styles and bug fix
+
 ### 1.0.0 ###
 * Initial release
 
