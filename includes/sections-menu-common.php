@@ -57,7 +57,7 @@ if ( ! function_exists( 'section_menus_display_default' ) ) {
 		<nav class="navbar navbar-toggleable-md navbar-light bg-primary sections-menu">
 			<div class="container">
 				<button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#sections-menu" aria-controls="#sections-menu" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="sr-only">Toggle sections navigation</span>
+					<span class="navbar-toggler-text">Skip to Section</span>
 					<span class="navbar-toggler-icon" aria-hidden="true"></span>
 				</button>
 				<div class="navbar-collapse collapse" id="sections-menu" data-selector="<?php echo $selector; ?>">
