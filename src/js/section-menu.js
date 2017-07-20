@@ -66,9 +66,8 @@
     // Initial constants
     const $sections = $(settings.selector);
     const $menuList = $(settings.nav).find('ul.nav');
-    const $firstSection = $sections.first();
 
-    settings.offset = $firstSection.offset().top - this.height();
+    settings.offset = this.offset().top - this.height();
 
     $sections.each(addToMenu);
     $(window).on('scroll', onScroll);

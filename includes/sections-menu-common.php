@@ -30,6 +30,7 @@ if ( ! class_exists( 'Section_Menus_Common' ) ) {
 		 **/
 		public static function enqueue_assets() {
 			wp_enqueue_script( 'section-menu-js', SECTION_MENUS__SCRIPT_URL . 'section-menu.min.js', array( 'jquery', 'script' ), null, true );
+			wp_enqueue_style( 'section-menu', plugins_url( 'static/css/section-menu.min.css', SECTION_MENUS__FILE ), null, false, 'screen' );
 		}
 
 		/**
@@ -55,20 +56,17 @@ if ( ! function_exists( 'section_menus_display_default' ) ) {
 	?>
 		<nav class="navbar navbar-toggleable-md navbar-light bg-primary sections-menu">
 			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggler navbar-toggler-right" data-toggle="collapse" data-target="#sections-menu" aria-controls="#sections-menu" aria-expanded="false">
-						<span class="sr-only">Toggle sections navigation</span>
-						Menu <span class="fa fa-bars" aria-hidden="true"></span>
-					</button>
-				</div>
-				<div class="collapse navbar-collapse" id="sections-menu" data-selector="<?php echo $selector; ?>">
+				<button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#sections-menu" aria-controls="#sections-menu" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="sr-only">Toggle sections navigation</span>
+					<span class="navbar-toggler-icon" aria-hidden="true"></span>
+				</button>
+				<div class="navbar-collapse collapse" id="sections-menu" data-selector="<?php echo $selector; ?>">
 					<ul class="nav navbar-nav">
 
 					</ul>
 				</div>
 			</div>
 		</nav>
-		<div class="navbar-bumper"></div>
 	<?php
 		return ob_get_clean();
 	}
