@@ -2,7 +2,7 @@
 /**
  * The Sections Menu Shortcode
  **/
-if ( ! class_exists( Section_Menus_Shortcode ) ) {
+if ( ! class_exists( 'Section_Menus_Shortcode' ) ) {
     class Section_Menus_Shortcode {
         /**
          * Handles the registration of the shortcode
