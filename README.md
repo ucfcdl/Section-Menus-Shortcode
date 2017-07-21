@@ -21,6 +21,10 @@ Note: jQuery is *required* for the JavaScript included with this plugin to work.
 
 ## Changelog ##
 
+### 1.0.2 ###
+* Added "Skip to Section" text to the mobile nav toggle button for clarity
+* Fixed minor PHP notice
+
 ### 1.0.1 ###
 * Updated mobile styles and bug fix
 
