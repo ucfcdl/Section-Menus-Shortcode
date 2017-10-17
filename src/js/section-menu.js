@@ -14,7 +14,8 @@
 
       const hash = e.target.hash;
       const $target = $(hash);
-      const scrollTo = $target.offset().top - this.height();
+      // Add +1 to ensure the correct nav item is highlighted when scrolled to
+      const scrollTo = $target.offset().top - this.height() + 1;
 
       if (history.pushState) {
         history.pushState(null, null, hash);
