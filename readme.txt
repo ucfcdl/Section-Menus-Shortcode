@@ -3,7 +3,7 @@ Contributors: ucfwebcom
 Tags: ucf, section, menus
 Requires at least: 4.7.3
 Tested up to: 4.7.3
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv3 or later
 License URI: http://www.gnu.org/copyleft/gpl-3.0.html
 
@@ -27,6 +27,10 @@ Note: jQuery is *required* for the JavaScript included with this plugin to work.
 
 
 == Changelog ==
+
+= 1.0.2 =
+* Added "Skip to Section" text to the mobile nav toggle button for clarity
+* Fixed minor PHP notice
 
 = 1.0.1 =
 * Updated mobile styles and bug fix
