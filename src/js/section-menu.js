@@ -2,6 +2,7 @@
   $.fn.sectionMenu = function (options) {
     const settings = $.extend({
       nav: this,
+      wrapper: this.closest('.sections-menu-wrapper'),
       selector: this.data('selector') ? this.data('selector') : '.auto-section',
       offset: this.height(),
       scrollTime: 750
@@ -13,7 +14,8 @@
 
       const hash = e.target.hash;
       const $target = $(hash);
-      const scrollTo = $target.offset().top - this.height();
+      // Add +1 to ensure the correct nav item is highlighted when scrolled to
+      const scrollTo = $target.offset().top - this.height() + 1;
 
       if (history.pushState) {
         history.pushState(null, null, hash);
@@ -64,12 +66,26 @@
     };
 
     // Initial constants
-    const $sections = $(settings.selector);
-    const $menuList = $(settings.nav).find('ul.nav');
+    const $sections    = $(settings.selector);
+    const $menuList    = $(settings.nav).find('ul.nav');
+    const $ucfhb       = $('#ucfhb');
+    const $ucfhbScript = $('script[src*="//universityheader.ucf.edu/bar/js/university-header"]');
+    let ucfhbHeight    = 50;
 
-    settings.offset = this.offset().top - this.height();
+    if ($ucfhb.length && $ucfhb.height()) {
+      // If we can detect the header's height, use it instead
+      ucfhbHeight = $ucfhb.height();
+    } else if (!$ucfhbScript.length) {
+      // If the header script isn't present at all, don't use the header height
+      ucfhbHeight = 0;
+    }
+
+    settings.offset = this.offset().top + ucfhbHeight - this.height();
 
     $sections.each(addToMenu);
+    if (settings.wrapper) {
+      $(settings.wrapper).css('min-height', this.height());
+    }
     $(window).on('scroll', onScroll);
     $('body').scrollspy({
       target: this,
