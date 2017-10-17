@@ -2,6 +2,7 @@
   $.fn.sectionMenu = function (options) {
     const settings = $.extend({
       nav: this,
+      wrapper: this.closest('.sections-menu-wrapper'),
       selector: this.data('selector') ? this.data('selector') : '.auto-section',
       offset: this.height(),
       scrollTime: 750
@@ -70,6 +71,9 @@
     settings.offset = this.offset().top - this.height();
 
     $sections.each(addToMenu);
+    if (settings.wrapper) {
+      $(settings.wrapper).css('min-height', this.height());
+    }
     $(window).on('scroll', onScroll);
     $('body').scrollspy({
       target: this,
