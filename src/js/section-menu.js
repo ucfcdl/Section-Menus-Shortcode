@@ -66,10 +66,21 @@
     };
 
     // Initial constants
-    const $sections = $(settings.selector);
-    const $menuList = $(settings.nav).find('ul.nav');
+    const $sections    = $(settings.selector);
+    const $menuList    = $(settings.nav).find('ul.nav');
+    const $ucfhb       = $('#ucfhb');
+    const $ucfhbScript = $('script[src*="//universityheader.ucf.edu/bar/js/university-header"]');
+    let ucfhbHeight    = 50;
 
-    settings.offset = this.offset().top - this.height();
+    if ($ucfhb.length && $ucfhb.height()) {
+      // If we can detect the header's height, use it instead
+      ucfhbHeight = $ucfhb.height();
+    } else if (!$ucfhbScript.length) {
+      // If the header script isn't present at all, don't use the header height
+      ucfhbHeight = 0;
+    }
+
+    settings.offset = this.offset().top + ucfhbHeight - this.height();
 
     $sections.each(addToMenu);
     if (settings.wrapper) {
