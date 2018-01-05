@@ -5,7 +5,8 @@
       wrapper: this.closest('.sections-menu-wrapper'),
       selector: this.data('selector') ? this.data('selector') : '.auto-section',
       offset: this.height(),
-      scrollTime: 750
+      scrollTime: 750,
+      menuCloseTime: 500
     }, options);
 
     // Triggered when anchor is clicked
@@ -14,21 +15,32 @@
 
       const hash = e.target.hash;
       const $target = $(hash);
-      // Add +1 to ensure the correct nav item is highlighted when scrolled to
-      const scrollTo = $target.offset().top - this.height() + 1;
+
+      if ($target.length) {
+        // If mobile menu visible
+        if ($navbarToggler.filter(':visible').length) {
+          $navbarToggler.trigger('click');
+
+          // Wait for menu to close before calculating scrollTo and scrolling
+          setTimeout(() => {
+            // Add +1 to ensure the correct nav item is highlighted when scrolled to
+            $('html, body').animate({
+              scrollTop: $target.offset().top - this.height() + 1
+            }, settings.scrollTime);
+          }, settings.menuCloseTime);
+
+        } else {
+          // Add +1 to ensure the correct nav item is highlighted when scrolled to
+          $('html, body').animate({
+            scrollTop: $target.offset().top - this.height() + 1
+          }, settings.scrollTime);
+        }
+      }
 
       if (history.pushState) {
         history.pushState(null, null, hash);
       } else {
         location.hash = hash;
-      }
-
-      if ($target.length) {
-        $('html, body').animate({
-          scrollTop: scrollTo
-        }, settings.scrollTime);
-
-        $target.focus();
       }
     };
 
@@ -66,11 +78,12 @@
     };
 
     // Initial constants
-    const $sections    = $(settings.selector);
-    const $menuList    = $(settings.nav).find('ul.nav');
-    const $ucfhb       = $('#ucfhb');
-    const $ucfhbScript = $('script[src*="//universityheader.ucf.edu/bar/js/university-header"]');
-    let ucfhbHeight    = 50;
+    const $sections      = $(settings.selector);
+    const $menuList      = $(settings.nav).find('ul.nav');
+    const $navbarToggler = settings.wrapper.find('.navbar-toggler');
+    const $ucfhb         = $('#ucfhb');
+    const $ucfhbScript   = $('script[src*="//universityheader.ucf.edu/bar/js/university-header"]');
+    let ucfhbHeight      = 50;
 
     if ($ucfhb.length && $ucfhb.height()) {
       // If we can detect the header's height, use it instead
