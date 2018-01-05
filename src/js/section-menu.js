@@ -17,6 +17,10 @@
       // Add +1 to ensure the correct nav item is highlighted when scrolled to
       const scrollTo = $target.offset().top - this.height() + 1;
 
+      if ($navbarToggler.filter(':visible').length) {
+        $navbarToggler.trigger('click');
+      }
+
       if (history.pushState) {
         history.pushState(null, null, hash);
       } else {
@@ -66,11 +70,12 @@
     };
 
     // Initial constants
-    const $sections    = $(settings.selector);
-    const $menuList    = $(settings.nav).find('ul.nav');
-    const $ucfhb       = $('#ucfhb');
-    const $ucfhbScript = $('script[src*="//universityheader.ucf.edu/bar/js/university-header"]');
-    let ucfhbHeight    = 50;
+    const $sections      = $(settings.selector);
+    const $menuList      = $(settings.nav).find('ul.nav');
+    const $navbarToggler = settings.wrapper.find('.navbar-toggler');
+    const $ucfhb         = $('#ucfhb');
+    const $ucfhbScript   = $('script[src*="//universityheader.ucf.edu/bar/js/university-header"]');
+    let ucfhbHeight      = 50;
 
     if ($ucfhb.length && $ucfhb.height()) {
       // If we can detect the header's height, use it instead
