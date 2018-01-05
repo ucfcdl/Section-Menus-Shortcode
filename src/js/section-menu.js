@@ -5,7 +5,8 @@
       wrapper: this.closest('.sections-menu-wrapper'),
       selector: this.data('selector') ? this.data('selector') : '.auto-section',
       offset: this.height(),
-      scrollTime: 750
+      scrollTime: 750,
+      menuCloseTime: 500
     }, options);
 
     // Triggered when anchor is clicked
@@ -14,25 +15,39 @@
 
       const hash = e.target.hash;
       const $target = $(hash);
-      // Add +1 to ensure the correct nav item is highlighted when scrolled to
-      const scrollTo = $target.offset().top - this.height() + 1;
+      let scrollTo;
 
-      if ($navbarToggler.filter(':visible').length) {
-        $navbarToggler.trigger('click');
+      if ($target.length) {
+        // If mobile menu visible
+        if ($navbarToggler.filter(':visible').length) {
+          $navbarToggler.trigger('click');
+
+          // Wait for menu to close before calculating scrollTo
+          setTimeout(() => {
+            const $navbar = settings.wrapper.find('.navbar');
+            // Add +1 to ensure the correct nav item is highlighted when scrolled to
+            if ($navbar.hasClass('fixed-top')) {
+              scrollTo = $target.offset().top - $navbar.height() + 1;
+            } else {
+              scrollTo = $target.offset().top - this.height() + 1;
+            }
+            $('html, body').animate({
+              scrollTop: scrollTo
+            }, settings.scrollTime);
+          }, settings.menuCloseTime);
+
+        } else {
+          // Add +1 to ensure the correct nav item is highlighted when scrolled to
+          $('html, body').animate({
+            scrollTop: $target.offset().top - this.height() + 1
+          }, settings.scrollTime);
+        }
       }
 
       if (history.pushState) {
         history.pushState(null, null, hash);
       } else {
         location.hash = hash;
-      }
-
-      if ($target.length) {
-        $('html, body').animate({
-          scrollTop: scrollTo
-        }, settings.scrollTime);
-
-        $target.focus();
       }
     };
 
