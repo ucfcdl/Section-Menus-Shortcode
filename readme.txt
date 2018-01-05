@@ -28,6 +28,10 @@ Note: jQuery is *required* for the JavaScript included with this plugin to work.
 
 == Changelog ==
 
+= 1.0.4 =
+Bug Fix:
+* Updated mobile menu to close when menu item is clicked
+
 = 1.0.3 =
 Enhancements:
 * Added affix offset calculations that account for the UCF Header
