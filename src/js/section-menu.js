@@ -15,24 +15,17 @@
 
       const hash = e.target.hash;
       const $target = $(hash);
-      let scrollTo;
 
       if ($target.length) {
         // If mobile menu visible
         if ($navbarToggler.filter(':visible').length) {
           $navbarToggler.trigger('click');
 
-          // Wait for menu to close before calculating scrollTo
+          // Wait for menu to close before calculating scrollTo and scrolling
           setTimeout(() => {
-            const $navbar = settings.wrapper.find('.navbar');
             // Add +1 to ensure the correct nav item is highlighted when scrolled to
-            if ($navbar.hasClass('fixed-top')) {
-              scrollTo = $target.offset().top - $navbar.height() + 1;
-            } else {
-              scrollTo = $target.offset().top - this.height() + 1;
-            }
             $('html, body').animate({
-              scrollTop: scrollTo
+              scrollTop: $target.offset().top - this.height() + 1
             }, settings.scrollTime);
           }, settings.menuCloseTime);
 
