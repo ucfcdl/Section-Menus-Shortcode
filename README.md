@@ -21,6 +21,18 @@ Note: jQuery is *required* for the JavaScript included with this plugin to work.
 
 ## Changelog ##
 
+### 1.0.4 ###
+Bug Fix:
+* Updated mobile menu to close when menu item is clicked
+
+### 1.0.3 ###
+Enhancements:
+* Added affix offset calculations that account for the UCF Header
+
+Bug Fixes:
+* Added fix for "jump" when the navbar affixes
+* Fixed bug where two nav links could be highlighted at the same time
+
 ### 1.0.2 ###
 * Added "Skip to Section" text to the mobile nav toggle button for clarity
 * Fixed minor PHP notice
