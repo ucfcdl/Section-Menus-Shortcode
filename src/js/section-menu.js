@@ -114,6 +114,13 @@
     const $ucfhbScript   = $('script[src*="//universityheader.ucf.edu/bar/js/university-header"]');
     let ucfhbHeight      = 50;
 
+    if (settings.autoSelect && !$sections.length) {
+      // If auto-selection is enabled and there are no menu items
+      // to auto-generate, remove the menu and return early
+      settings.wrapper.remove();
+      return this;
+    }
+
     if ($ucfhb.length && $ucfhb.height()) {
       // If we can detect the header's height, use it instead
       ucfhbHeight = $ucfhb.height();
@@ -124,7 +131,7 @@
 
     settings.offset = this.offset().top + ucfhbHeight - this.height();
 
-    if (settings.autoSelect && $sections.length) {
+    if (settings.autoSelect) {
       $sections.each(addToMenu);
     }
 
