@@ -121,9 +121,10 @@ if ( ! function_exists( 'section_menu_item_display_default' ) ) {
 	function section_menu_item_display_default( $atts, $content='' ) {
 		ob_start();
 		if ( $content && $atts['href'] ):
+			$target = $atts['new_window'] ? '_blank' : '';
 		?>
 			<li class="<?php echo $atts['li_class']; ?>">
-				<a class="<?php echo $atts['a_class']; ?>" rel="<?php echo $atts['rel']; ?>" href="<?php echo $atts['href']; ?>">
+				<a class="<?php echo $atts['a_class']; ?>" rel="<?php echo $atts['rel']; ?>" href="<?php echo $atts['href']; ?>" target="<?php echo $target; ?>">
 					<?php echo wptexturize( do_shortcode( $content ) ); ?>
 				</a>
 			</li>

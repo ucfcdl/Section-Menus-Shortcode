@@ -56,17 +56,19 @@ if ( ! class_exists( 'Section_Menu_Items_Shortcode' ) ) {
          **/
         public static function callback( $atts, $content='' ) {
             $atts = shortcode_atts( array(
-				'li_class' => 'nav-item',
-				'a_class'  => 'section-link nav-link',
-				'href'     => '',
-				'rel'      => '',
-				'layout'   => 'default'
+				'li_class'   => 'nav-item',
+				'a_class'    => 'section-link nav-link',
+				'href'       => '',
+				'rel'        => '',
+				'new_window' => false,
+				'layout'     => 'default'
 			), $atts );
 
-			$atts['li_class'] = esc_attr( $atts['li_class'] );
-			$atts['a_class']  = esc_attr( $atts['a_class'] );
-			$atts['href']     = esc_url( $atts['href'] );
-			$atts['rel']      = esc_attr( $atts['rel'] );
+			$atts['li_class']   = esc_attr( $atts['li_class'] );
+			$atts['a_class']    = esc_attr( $atts['a_class'] );
+			$atts['href']       = esc_url( $atts['href'] );
+			$atts['rel']        = esc_attr( $atts['rel'] );
+			$atts['new_window'] = filter_var( $atts['new_window'], FILTER_VALIDATE_BOOLEAN );
 
             return Section_Menus_Common::display_section_menu_item( $atts, $content );
         }
