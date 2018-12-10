@@ -41,7 +41,7 @@ if ( ! class_exists( 'Section_Menu_Items_Shortcode' ) ) {
         /**
          * Handles the registration of the shortcode
          * @author Jo Dickson
-         * @since 1.0.5
+         * @since 1.1.0
          **/
         public static function register_shortcode() {
             add_shortcode( 'section-menu-item', array( 'Section_Menu_Items_Shortcode', 'callback' ) );
@@ -50,7 +50,7 @@ if ( ! class_exists( 'Section_Menu_Items_Shortcode' ) ) {
         /**
          * The `section-menu-item` shortcode callback
          * @author Jo Dickson
-         * @since 1.0.5
+         * @since 1.1.0
          * @param array $atts | The shortcode attributes
          * @return string | The shortcode output
          **/

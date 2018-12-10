@@ -54,7 +54,7 @@ if ( ! class_exists( 'Section_Menus_Common' ) ) {
 		 * inner [section-menu-item]'s, ignoring other extraneous content.
 		 *
 		 * @author Jo Dickson
-		 * @since 1.0.5
+		 * @since 1.1.0
 		 * @param string $content | Inner [section-menu] shortcode contents
 		 * @return string | HTML markup for the section menu <ul>
 		 */
@@ -72,7 +72,7 @@ if ( ! class_exists( 'Section_Menus_Common' ) ) {
 		 * Returns HTML markup for a section menu's custom inner list item.
 		 *
 		 * @author Jo Dickson
-		 * @since 1.0.5
+		 * @since 1.1.0
 		 * @param array $atts | Shortcode attributes
 		 * @param string $content | Inner [section-menu-item] shortcode contents
 		 * @return string | HTML markup for the list item
