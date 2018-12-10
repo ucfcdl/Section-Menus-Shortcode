@@ -17,7 +17,7 @@ define( 'SECTION_MENUS__SCRIPT_URL', SECTION_MENUS__STATIC_URL . 'js/' );
 define( 'SECTION_MENUS__STYLES_URL', SECTION_MENUS__STATIC_URL . 'css/' );
 
 include_once 'includes/sections-menu-common.php';
-include_once 'includes/sections-menu-shortcode.php';
+include_once 'includes/sections-menu-shortcodes.php';
 
 if ( ! function_exists( 'section_menus_activation' ) ) {
     function section_menus_activation() {
@@ -36,6 +36,7 @@ if ( ! function_exists( 'section_menus_deactivation' ) ) {
 }
 
 add_action( 'init', array( 'Section_Menus_Shortcode', 'register_shortcode' ), 10, 0 );
+add_action( 'init', array( 'Section_Menu_Items_Shortcode', 'register_shortcode' ), 10, 0 );
 add_action( 'wp_enqueue_scripts', array( 'Section_Menus_Common', 'enqueue_assets' ), 10, 0 );
 
 add_filter( 'the_content', array( 'Section_Menus_Common', 'format_shortcode_output' ), 10, 1 );
