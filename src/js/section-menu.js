@@ -1,22 +1,42 @@
 (function ($) {
   $.fn.sectionMenu = function (options) {
+    const $menu = this.find('#sections-menu');
+    const selector = $menu.data('selector') ? $menu.data('selector') : '.auto-section';
+    let autoSelect = true;
+    if (typeof $menu.data('autoselect') !== 'undefined') {
+      autoSelect = $menu.data('autoselect');
+    } else if (selector) {
+      // Backwards compatibility: assume menu items should be generated
+      // automatically if the data-autoselect attr is missing, but the
+      // data-selector attr is set and not empty
+      autoSelect = true;
+    } else {
+      autoSelect = false;
+    }
+
     const settings = $.extend({
       nav: this,
       wrapper: this.closest('.sections-menu-wrapper'),
-      selector: this.data('selector') ? this.data('selector') : '.auto-section',
+      autoSelect,
+      selector,
       offset: this.height(),
       scrollTime: 750,
       menuCloseTime: 500
     }, options);
 
-    // Triggered when anchor is clicked
+    // Triggered when nav link is clicked
     const onClick = (e) => {
-      e.preventDefault();
-
+      const currentPage = window.location.href.replace(window.location.hash, '');
       const hash = e.target.hash;
-      const $target = $(hash);
+      const href = e.target.href.replace(hash, '');
+      const $target = currentPage === href ? $(hash) : null;
 
+      // Autoscroll to section on page and update document url
+      // if this is a valid page anchor.
+      // External links will behave normally
       if ($target.length) {
+        e.preventDefault();
+
         // If mobile menu visible
         if ($navbarToggler.filter(':visible').length) {
           $navbarToggler.trigger('click');
@@ -35,12 +55,12 @@
             scrollTop: $target.offset().top - this.height() + 1
           }, settings.scrollTime);
         }
-      }
 
-      if (history.pushState) {
-        history.pushState(null, null, hash);
-      } else {
-        location.hash = hash;
+        if (history.pushState) {
+          history.pushState(null, null, hash);
+        } else {
+          location.hash = hash;
+        }
       }
     };
 
@@ -63,7 +83,6 @@
       const $listItem = $('<li class="nav-item"></li>');
       const $anchor = $(`<a class="section-link nav-link" href="#${url}">${text}</a>`);
 
-      $anchor.on('click', onClick);
       $listItem.append($anchor);
       $menuList.append($listItem);
     };
@@ -74,6 +93,16 @@
         this.addClass('fixed-top');
       } else {
         this.removeClass('fixed-top');
+      }
+    };
+
+    // Callback to apply events to menu list items
+    const addLinkEvents = ($menuList) => {
+      const $anchors = $menuList.find('.section-link');
+      if ($anchors.length) {
+        $anchors.each((i, anchor) => {
+          $(anchor).on('click', onClick);
+        });
       }
     };
 
@@ -95,10 +124,16 @@
 
     settings.offset = this.offset().top + ucfhbHeight - this.height();
 
-    $sections.each(addToMenu);
+    if (settings.autoSelect && $sections.length) {
+      $sections.each(addToMenu);
+    }
+
+    addLinkEvents($menuList);
+
     if (settings.wrapper) {
       $(settings.wrapper).css('min-height', this.height());
     }
+
     $(window).on('scroll', onScroll);
     $('body').scrollspy({
       target: this,
