@@ -83,7 +83,6 @@
       const $listItem = $('<li class="nav-item"></li>');
       const $anchor = $(`<a class="section-link nav-link" href="#${url}">${text}</a>`);
 
-      // $anchor.on('click', onClick);
       $listItem.append($anchor);
       $menuList.append($listItem);
     };
