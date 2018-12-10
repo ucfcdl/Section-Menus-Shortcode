@@ -92,8 +92,8 @@ if ( ! class_exists( 'Section_Menus_Common' ) ) {
 if ( ! function_exists( 'section_menus_display_default' ) ) {
 	function section_menus_display_default( $selector, $content='' ) {
 		$content     = trim( $content );
-		$auto_select = $content ? 'false' : 'true';
 		$list_items  = $content ? trim( Section_Menus_Common::get_custom_menu_items( $content ) ) : '';
+		$auto_select = $list_items ? 'false' : 'true';
 
 		ob_start();
 	?>
