@@ -40,3 +40,7 @@ add_action( 'init', array( 'Section_Menu_Items_Shortcode', 'register_shortcode' 
 add_action( 'wp_enqueue_scripts', array( 'Section_Menus_Common', 'enqueue_assets' ), 10, 0 );
 
 add_filter( 'the_content', array( 'Section_Menus_Common', 'format_shortcode_output' ), 10, 1 );
+
+// Enable necessary data attributes on elements that would otherwise
+// be filtered by WordPress's KSES filters:
+add_filter( 'wp_kses_allowed_html', array( 'Section_Menus_Common', 'kses_valid_attributes' ), 10, 2 );
