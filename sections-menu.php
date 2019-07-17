@@ -5,6 +5,7 @@ Description: Provides a shortcode that auto generates a menu for each section of
 Author: UCF Web Communications
 Version: 1.1.0
 License: GPL3
+GitHub Plugin URI: UCF/Section-Menus-Shortcode
 */
 if ( ! defined( 'WPINC' ) ) {
     die;
