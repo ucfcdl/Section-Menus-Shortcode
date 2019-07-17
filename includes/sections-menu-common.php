@@ -97,7 +97,7 @@ if ( ! function_exists( 'section_menus_display_default' ) ) {
 
 		ob_start();
 	?>
-		<nav class="sections-menu-wrapper">
+		<nav class="sections-menu-wrapper" aria-label="Page section navigation">
 			<div class="navbar navbar-toggleable-md navbar-light bg-primary sections-menu">
 				<div class="container">
 					<button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#sections-menu" aria-controls="#sections-menu" aria-expanded="false" aria-label="Toggle navigation">
