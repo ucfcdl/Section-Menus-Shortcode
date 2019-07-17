@@ -3,7 +3,7 @@ Contributors: ucfwebcom
 Tags: ucf, section, menus
 Requires at least: 4.7.3
 Tested up to: 4.7.3
-Stable tag: 1.0.3
+Stable tag: 1.1.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/copyleft/gpl-3.0.html
 
@@ -27,6 +27,26 @@ Note: jQuery is *required* for the JavaScript included with this plugin to work.
 
 
 == Changelog ==
+
+= 1.1.0 =
+Enhancements:
+* Added the ability to manually define section menu links instead of them being generated automatically via JavaScript.
+
+  The new `[section-menu-item]` allows you to define a link within a section menu.  Links can be internal page anchors or external links.  Parameters are available for adding `rel` attributes, adjusting CSS classes on the generated `<li>` and `<a>` elements, and to open the generated link in a new window.
+
+  Example:
+
+  ```
+  [section-menu]
+  [section-menu-item href="#some-section"]Page Section Link[/section-menu-item]
+  [section-menu-item a_class="..." li_class="..." href="https://www.ucf.edu/" rel="nofollow" new_window="true"]External Link[/section-menu-item]
+  [/section-menu]
+  ```
+
+  Manually-defined link items will only take effect if at least one valid inner `[section-menu-item]` shortcode is present within an enclosing `[section-menu][/section-menu]` shortcode.  Otherwise, links will still be generated automatically based on existing sections on the page.
+
+Bug Fixes:
+* Fixed issue where empty section menus would still be visible at smaller screen sizes.
 
 = 1.0.4 =
 Bug Fix:

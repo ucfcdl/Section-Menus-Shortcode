@@ -3,7 +3,7 @@
 Plugin Name: Automatic Section Menu Shortcode
 Description: Provides a shortcode that auto generates a menu for each section of a page based on a common css class selector
 Author: UCF Web Communications
-Version: 1.0.3
+Version: 1.1.0
 License: GPL3
 */
 if ( ! defined( 'WPINC' ) ) {
