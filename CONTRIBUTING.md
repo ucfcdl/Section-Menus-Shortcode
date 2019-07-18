@@ -119,7 +119,7 @@ In general, we keep conversations about distributed UCF WordPress projects on th
 Whenever you post to the ucf-wp Slack, including your **job title**, information about the **college or department** you work for, as well as the **site(s) you need help with** will help us help you more effectively.
 
 ### Help
-If you need help with using this plugin on your site, check out our [project README](https://github.com/UCF/Section-Menus-Shortcode/blob/master/README.md).  If you can't find the answer to your question there, please drop us a line in the [#help-plugins Slack channel](https://ucf-wp.slack.com/messages/help-plugins/).  You don't need to @mention anyone specific, but **please note that you're using the Section Menus Shortcode when posting your question** and include a link to your site if it's relevant to your question.
+If you need help with using this plugin on your site, check out our [project wiki](https://github.com/UCF/Section-Menus-Shortcode/wiki).  If you can't find the answer to your question there, please drop us a line in the [#help-plugins Slack channel](https://ucf-wp.slack.com/messages/help-plugins/).  You don't need to @mention anyone specific, but **please note that you're using the Section Menus Shortcode when posting your question** and include a link to your site if it's relevant to your question.
 
 -----
 
