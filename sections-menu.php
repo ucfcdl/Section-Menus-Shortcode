@@ -1,10 +1,11 @@
 <?php
 /*
-Plugin Name: Automatic Section Menu Shortcode
-Description: Provides a shortcode that auto generates a menu for each section of a page based on a common css class selector
+Plugin Name: Automatic Section Menu Shortcodes
+Description: Provides shortcodes for generating a sticky menu on a page, populated automatically based on sections on the page or manually with custom links.
 Author: UCF Web Communications
-Version: 1.1.0
+Version: 1.1.1
 License: GPL3
+GitHub Plugin URI: UCF/Section-Menus-Shortcode
 */
 if ( ! defined( 'WPINC' ) ) {
     die;
