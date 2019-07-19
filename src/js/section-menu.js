@@ -17,8 +17,8 @@
     const settings = $.extend({
       nav: this,
       wrapper: this.closest('.sections-menu-wrapper'),
-      autoSelect,
-      selector,
+      autoSelect: autoSelect,
+      selector: selector,
       offset: this.height(),
       scrollTime: 750,
       menuCloseTime: 500
