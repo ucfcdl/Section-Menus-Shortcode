@@ -1,10 +1,11 @@
 <?php
 /*
-Plugin Name: Automatic Section Menu Shortcode
-Description: Provides a shortcode that auto generates a menu for each section of a page based on a common css class selector
+Plugin Name: Automatic Section Menu Shortcodes
+Description: Provides shortcodes for generating a sticky menu on a page, populated automatically based on sections on the page or manually with custom links.
 Author: UCF Web Communications
 Version: 1.1.0
 License: GPL3
+GitHub Plugin URI: UCF/Section-Menus-Shortcode
 */
 if ( ! defined( 'WPINC' ) ) {
     die;
@@ -40,3 +41,7 @@ add_action( 'init', array( 'Section_Menu_Items_Shortcode', 'register_shortcode' 
 add_action( 'wp_enqueue_scripts', array( 'Section_Menus_Common', 'enqueue_assets' ), 10, 0 );
 
 add_filter( 'the_content', array( 'Section_Menus_Common', 'format_shortcode_output' ), 10, 1 );
+
+// Enable necessary data attributes on elements that would otherwise
+// be filtered by WordPress's KSES filters:
+add_filter( 'wp_kses_allowed_html', array( 'Section_Menus_Common', 'kses_valid_attributes' ), 10, 2 );

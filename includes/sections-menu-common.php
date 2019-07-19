@@ -86,6 +86,39 @@ if ( ! class_exists( 'Section_Menus_Common' ) ) {
 
 			return $output;
 		}
+
+		/**
+		 * Applies content filtering overrides to prevent expected
+		 * data attributes from being stripped by WordPress KSES filtering
+		 * prior to WP 5.0.
+		 *
+		 * @author Jo Dickson
+		 * @since 1.1.1
+		 * @param array $tags Global $allowedposttags array
+		 * @param mixed $context Context for which to retrieve tags
+		 * @return array Modified post tag array
+		 */
+		public static function kses_valid_attributes( $tags, $context ) {
+			if ( $context === 'post' ) {
+				// Tags on which our custom data attributes should be valid.
+				$data_attr_tags = array(
+					'div',
+					'section',
+					'aside',
+					'article'
+				);
+
+				foreach ( $data_attr_tags as $t ) {
+					if ( ! isset( $tags[$t]['data-*'] ) ) {
+						$existing_rules = isset( $tags[$t] ) ? $tags[$t] : array();
+						$tags[$t] = array_merge( $existing_rules, array(
+							'data-section-link-title' => true
+						) );
+					}
+				}
+			}
+			return $tags;
+		}
 	}
 }
 
@@ -97,10 +130,10 @@ if ( ! function_exists( 'section_menus_display_default' ) ) {
 
 		ob_start();
 	?>
-		<nav class="sections-menu-wrapper">
+		<nav class="sections-menu-wrapper" aria-label="Page section navigation">
 			<div class="navbar navbar-toggleable-md navbar-light bg-primary sections-menu">
 				<div class="container">
-					<button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#sections-menu" aria-controls="#sections-menu" aria-expanded="false" aria-label="Toggle navigation">
+					<button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#sections-menu" aria-controls="#sections-menu" aria-expanded="false">
 						<span class="navbar-toggler-text">Skip to Section</span>
 						<span class="navbar-toggler-icon" aria-hidden="true"></span>
 					</button>
