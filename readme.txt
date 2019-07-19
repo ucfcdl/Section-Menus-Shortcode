@@ -3,7 +3,7 @@ Contributors: ucfwebcom
 Tags: ucf, section, menus
 Requires at least: 4.7.3
 Tested up to: 5.2.1
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/copyleft/gpl-3.0.html
 
@@ -23,6 +23,15 @@ Head over to the [Section Menus Shortcode plugin wiki](https://github.com/UCF/Se
 
 
 == Changelog ==
+
+= 1.1.1 =
+Enhancements:
+* Added a unique `aria-label` attribute to generated menu `nav` elements.
+* Removed redundant `aria-label` on generated menu toggler buttons.
+* Added linter configs and Github issue templates, upgraded packages, and added more information about using and contributing to this project in our CONTRIBUTING doc and new wiki.
+
+Bug Fixes:
+* Added KSES filter overrides to support the `data-section-link-title` data attribute on `div`, `article`, `aside`, and `section` elements, to help prevent this attribute from being wiped out by non-administrators when editing or saving posts and pages using it on versions of WordPress prior to 5.0.
 
 = 1.1.0 =
 Enhancements:

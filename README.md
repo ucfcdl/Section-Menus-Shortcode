@@ -17,6 +17,15 @@ Head over to the [Section Menus Shortcode plugin wiki](https://github.com/UCF/Se
 
 ## Changelog ##
 
+### 1.1.1 ###
+Enhancements:
+* Added a unique `aria-label` attribute to generated menu `nav` elements.
+* Removed redundant `aria-label` on generated menu toggler buttons.
+* Added linter configs and Github issue templates, upgraded packages, and added more information about using and contributing to this project in our CONTRIBUTING doc and new wiki.
+
+Bug Fixes:
+* Added KSES filter overrides to support the `data-section-link-title` data attribute on `div`, `article`, `aside`, and `section` elements, to help prevent this attribute from being wiped out by non-administrators when editing or saving posts and pages using it on versions of WordPress prior to 5.0.
+
 ### 1.1.0 ###
 Enhancements:
 * Added the ability to manually define section menu links instead of them being generated automatically via JavaScript.
