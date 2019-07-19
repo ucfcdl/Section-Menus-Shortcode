@@ -14,7 +14,7 @@ Provides shortcodes for generating a sticky menu on a page, populated automatica
 
 Provides shortcodes for generating a sticky menu on a page, populated automatically based on sections on the page or with custom links.  This menu system is meant to be used with Bootstrap 4 or the [Athena Framework](https://ucf.github.io/Athena-Framework/).
 
-Note: jQuery is *required* for the JavaScript included with this plugin to work.  See [#Installation-Requirements](Installation Requirements) for more information.
+Note: jQuery is *required* for the JavaScript included with this plugin to work.  See [Installation Requirements](#installation-requirements) for more information.
 
 
 == Documentation ==
