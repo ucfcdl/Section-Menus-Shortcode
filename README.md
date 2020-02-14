@@ -17,6 +17,10 @@ Head over to the [Section Menus Shortcode plugin wiki](https://github.com/UCF/Se
 
 ## Changelog ##
 
+### 1.1.2 ###
+Documentation:
+* Update the contributing doc.
+
 ### 1.1.1 ###
 Enhancements:
 * Added a unique `aria-label` attribute to generated menu `nav` elements.
