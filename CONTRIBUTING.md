@@ -16,7 +16,7 @@ Thank you for your interest in contributing to this project!  This document outl
 
 The [issue tracker](https://github.com/UCF/Section-Menus-Shortcode/issues) in Github is the preferred channel for [bug reports](#bug-reports), [feature requests](#feature-requests) and [submitting pull requests](#pull-requests).
 
-Please do not use the issue tracker for personal support requests.  The [#help-plugins Slack channel](https://ucf-wp.slack.com/messages/help-plugins/) is the best place to get help with your project.  See the section on [getting help](#asking-questionsgetting-help) for more information.
+Please do not use the issue tracker for personal support requests.  The [#help-plugins Teams channel](https://teams.microsoft.com/l/channel/19%3a8ade234408d44b93a02f01b1964d7856%40thread.skype/help-themes?groupId=5e3e72e2-3599-47b3-bcfc-bb3d5b579f12&tenantId=bb932f15-ef38-42ba-91fc-f3c59d5dd1f1) is the best place to get help with your project.  See the section on [getting help](#asking-questionsgetting-help) for more information.
 
 
 ## Bug reports
@@ -35,7 +35,7 @@ If you've followed the steps above and have a valid bug report to submit, you ca
 
 Add a descriptive, understandable title and details about the bug in the description field, following the template provided. Please try to be as detailed as possible in your report. What steps will reproduce the issue? What browser(s) and OS experience the problem? Do other browsers show the bug differently? What would you expect to be the outcome? All of the information you provide will help us quickly evaluate and fix the issue.
 
-If you have a live example of the bug available somewhere public, please include a link in the bug report.  If you're not comfortable including the URL in the Github issue (e.g. it points to a development environment), you can make a note of it in the report (e.g. "see Slack for example URL"), then share the URL in the [#help-plugins Slack channel](https://ucf-wp.slack.com/messages/help-plugins/).
+If you have a live example of the bug available somewhere public, please include a link in the bug report.  If you're not comfortable including the URL in the Github issue (e.g. it points to a development environment), you can make a note of it in the report (e.g. "see Teams for example URL"), then share the URL in the [#help-plugins Teams channel](https://teams.microsoft.com/l/channel/19%3a8ade234408d44b93a02f01b1964d7856%40thread.skype/help-themes?groupId=5e3e72e2-3599-47b3-bcfc-bb3d5b579f12&tenantId=bb932f15-ef38-42ba-91fc-f3c59d5dd1f1).
 
 
 ## Feature requests
@@ -114,12 +114,12 @@ Adhering to the following process is the best way to submit a pull request:
 
 ## Asking questions/getting help
 
-In general, we keep conversations about distributed UCF WordPress projects on the [ucf-wp Slack workspace](https://ucf-wp.slack.com/).  This workspace is owned and managed by UCF Web Communications (Webcom).  You'll need a **@ucf.edu** email address to join.
+In general, we keep conversations about distributed UCF WordPress projects in the [UCFTeam-Campus-Wordpress Team](https://teams.microsoft.com/l/channel/19%3acf4fa1fd7b1042949ecd1acf5413aa22%40thread.skype/General?groupId=5e3e72e2-3599-47b3-bcfc-bb3d5b579f12&tenantId=bb932f15-ef38-42ba-91fc-f3c59d5dd1f1). If you're not already a member of this Team, you'll be prompted to request access to join.
 
-Whenever you post to the ucf-wp Slack, including your **job title**, information about the **college or department** you work for, as well as the **site(s) you need help with** will help us help you more effectively.
+Whenever you post a question in this Team, please include your **job title**, information about the **college or department** you work for, as well as the **site(s) you need help with** will help us help you more effectively.
 
 ### Help
-If you need help with using this plugin on your site, check out our [project wiki](https://github.com/UCF/Section-Menus-Shortcode/wiki).  If you can't find the answer to your question there, please drop us a line in the [#help-plugins Slack channel](https://ucf-wp.slack.com/messages/help-plugins/).  You don't need to @mention anyone specific, but **please note that you're using the Section Menus Shortcode when posting your question** and include a link to your site if it's relevant to your question.
+If you need help with using this plugin on your site, check out our [project wiki](https://github.com/UCF/Section-Menus-Shortcode/wiki).  If you can't find the answer to your question there, please drop us a line in the [#help-plugins Teams channel](https://teams.microsoft.com/l/channel/19%3a5325780226474b76b53d50029eae9e22%40thread.skype/help-plugins?groupId=5e3e72e2-3599-47b3-bcfc-bb3d5b579f12&tenantId=bb932f15-ef38-42ba-91fc-f3c59d5dd1f1).  You don't need to @mention anyone specific, but **please note that you're using the Section Menus Shortcode when posting your question** and include a link to your site if it's relevant to your question.
 
 -----
 
