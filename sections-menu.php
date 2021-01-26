@@ -3,7 +3,7 @@
 Plugin Name: Automatic Section Menu Shortcodes
 Description: Provides shortcodes for generating a sticky menu on a page, populated automatically based on sections on the page or manually with custom links.
 Author: UCF Web Communications
-Version: 1.1.3
+Version: TODO
 License: GPL3
 GitHub Plugin URI: UCF/Section-Menus-Shortcode
 */
