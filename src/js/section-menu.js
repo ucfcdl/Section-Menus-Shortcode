@@ -24,8 +24,6 @@
       menuCloseTime: 500
     }, options);
 
-    let calculateOffsetTimer = null;
-
     // Triggered when nav link is clicked
     const onClick = (e) => {
       const currentPage = window.location.href.replace(window.location.hash, '');
@@ -97,11 +95,6 @@
       }
     };
 
-    const calculateOffsetDebounce = () => {
-      clearTimeout(calculateOffsetTimer);
-      calculateOffsetTimer = setTimeout(calculateOffset, 250);
-    };
-
     // Called whenever window is scrolled
     const onScroll = () => {
       if ($(window).scrollTop() >= settings.offset) {
@@ -150,7 +143,6 @@
     } else {
       settings.offset = this.offset().top;
     }
-    $(window).on('resize', calculateOffsetDebounce);
     $(window).on('scroll', onScroll);
     $('body').scrollspy({
       target: this,
