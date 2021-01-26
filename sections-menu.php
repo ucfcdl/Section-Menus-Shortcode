@@ -11,11 +11,12 @@ if ( ! defined( 'WPINC' ) ) {
     die;
 }
 
-define( 'SECTION_MENUS__FILE', __FILE__ );
-define( 'SECTION_MENUS__URL', plugins_url( '/', __FILE__ ) );
-define( 'SECTION_MENUS__STATIC_URL', SECTION_MENUS__URL . 'static/' );
-define( 'SECTION_MENUS__SCRIPT_URL', SECTION_MENUS__STATIC_URL . 'js/' );
-define( 'SECTION_MENUS__STYLES_URL', SECTION_MENUS__STATIC_URL . 'css/' );
+define( 'SECTION_MENUS__PLUGIN_FILE', __FILE__ );
+define( 'SECTION_MENUS__PLUGIN_URL', plugins_url( basename( dirname( __FILE__ ) ) ) );
+define( 'SECTION_MENUS__PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+define( 'SECTION_MENUS__STATIC_URL', SECTION_MENUS__PLUGIN_URL . '/static' );
+define( 'SECTION_MENUS__SCRIPT_URL', SECTION_MENUS__STATIC_URL . '/js' );
+define( 'SECTION_MENUS__STYLES_URL', SECTION_MENUS__STATIC_URL . '/css' );
 
 include_once 'includes/sections-menu-common.php';
 include_once 'includes/sections-menu-shortcodes.php';
@@ -25,7 +26,7 @@ if ( ! function_exists( 'section_menus_activation' ) ) {
 
     }
 
-    register_activation_hook( 'section_menus_activation', SECTION_MENUS__FILE );
+    register_activation_hook( 'section_menus_activation', SECTION_MENUS__PLUGIN_FILE );
 }
 
 if ( ! function_exists( 'section_menus_deactivation' ) ) {
@@ -33,12 +34,13 @@ if ( ! function_exists( 'section_menus_deactivation' ) ) {
 
     }
 
-    register_deactivation_hook( 'section_menus_deactivation', SECTION_MENUS__FILE );
+    register_deactivation_hook( 'section_menus_deactivation', SECTION_MENUS__PLUGIN_FILE );
 }
 
 add_action( 'init', array( 'Section_Menus_Shortcode', 'register_shortcode' ), 10, 0 );
 add_action( 'init', array( 'Section_Menu_Items_Shortcode', 'register_shortcode' ), 10, 0 );
-add_action( 'wp_enqueue_scripts', array( 'Section_Menus_Common', 'enqueue_assets' ), 10, 0 );
+add_action( 'wp_enqueue_scripts', array( 'Section_Menus_Common', 'register_assets' ), 10, 0 );
+add_action( 'wp_enqueue_scripts', array( 'Section_Menus_Common', 'enqueue_styles' ), 11, 0 );
 
 add_filter( 'the_content', array( 'Section_Menus_Common', 'format_shortcode_output' ), 10, 1 );
 

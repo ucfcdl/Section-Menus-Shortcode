@@ -15,6 +15,7 @@ if ( ! class_exists( 'Section_Menus_Common' ) ) {
 		 * @return string | The section menu markup
 		 **/
 		public static function display_section_menu( $selector, $layout, $content='' ) {
+			self::enqueue_scripts();
 			$output = section_menus_display_default( $selector, $content );
 
 			if ( has_filter( 'section_menus_display_' . $layout ) ) {
@@ -25,13 +26,36 @@ if ( ! class_exists( 'Section_Menus_Common' ) ) {
 		}
 
 		/**
-		 * Enqueues the frontend assets
-		 * @author Jim Barnes
-		 * @since 1.0.0
+		 * Registers frontend plugin assets
+		 * @since 1.1.3
+		 * @author Jo Dickson
+		 * @return void
+		 */
+		public static function register_assets() {
+			$plugin_data = get_plugin_data( SECTION_MENUS__PLUGIN_FILE, false, false );
+			$version     = $plugin_data['Version'];
+
+			wp_register_script( 'section-menu-js', SECTION_MENUS__SCRIPT_URL . '/section-menu.min.js', array( 'jquery', 'script' ), $version, true );
+			wp_register_style( 'section-menu', SECTION_MENUS__STYLES_URL . '/section-menu.min.css', null, $version, 'screen' );
+		}
+
+		/**
+		 * Enqueues frontend plugin styles
+		 * @since 1.1.3
+		 * @author Jo Dickson
+		 * @return void
+		 */
+		public static function enqueue_styles() {
+			wp_enqueue_style( 'section-menu' );
+		}
+
+		/**
+		 * Enqueues frontend plugin scripts
+		 * @author Jo Dickson
+		 * @since 1.1.3
 		 **/
-		public static function enqueue_assets() {
-			wp_enqueue_script( 'section-menu-js', SECTION_MENUS__SCRIPT_URL . 'section-menu.min.js', array( 'jquery', 'script' ), null, true );
-			wp_enqueue_style( 'section-menu', plugins_url( 'static/css/section-menu.min.css', SECTION_MENUS__FILE ), null, false, 'screen' );
+		public static function enqueue_scripts() {
+			wp_enqueue_script( 'section-menu-js' );
 		}
 
 		/**
