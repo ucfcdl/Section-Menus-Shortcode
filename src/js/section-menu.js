@@ -139,7 +139,7 @@
 
     // Assign scroll events
     if ($ucfhbScript.length) {
-      $(window).on('load scroll', calculateOffset);
+      $(window).on('load scroll resize', calculateOffset);
     } else {
       settings.offset = this.offset().top;
     }
