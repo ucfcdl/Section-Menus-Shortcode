@@ -17,6 +17,15 @@ Head over to the [Section Menus Shortcode plugin wiki](https://github.com/UCF/Se
 
 ## Changelog ##
 
+### 1.1.3 ###
+Enhancements:
+* Added late enqueuing to frontend plugin JS, so only pages that use a section menu will load the relevant JS file
+* Added a baseline min-height to the section menu wrapper element to help reduce content shift on page load
+* Improved affixing offset calculations to better account for when the UCF Header loads in and is visible
+* Added missing version number cache-busting to enqueued assets
+* Cleaned up some constant names + their values for consistency with our other plugins
+* Upgraded packages
+
 ### 1.1.2 ###
 Documentation:
 * Update the contributing doc.
